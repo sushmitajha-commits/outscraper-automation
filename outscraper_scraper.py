@@ -28,9 +28,32 @@ BASE_FILENAME = "manufacturing_outscraper"
 
 # 10 manufacturing subtypes provided by Outscraper
 # adjust this list as needed, must reflect real place categories
-KEYWORDS = [
-    "manufacturer","food manufacturer","machining manufacturer","medical equipment manufacturer","trailer manufacturer","leather goods manufacturer"
+# ─────────────────────────────────────────────
+# LOAD KEYWORDS FROM CSV
+# ─────────────────────────────────────────────
+
+MANUFACTURERS_PATH = "Manufacturers.csv"
+
+manufacturers_df = pd.read_csv(MANUFACTURERS_PATH)
+
+# Normalize columns
+manufacturers_df.columns = manufacturers_df.columns.str.strip()
+
+# Take only rows that are NOT done
+manufacturers_df = manufacturers_df[
+    manufacturers_df["Status"].str.lower() != "done"
 ]
+
+# Extract keywords
+KEYWORDS = (
+    manufacturers_df["Type"]
+    .dropna()
+    .astype(str)
+    .str.strip()
+    .tolist()
+)
+
+print(f"Loaded {len(KEYWORDS)} keywords from Manufacturers.csv")
 
 OUTSCRAPER_API_KEY = os.environ.get(
     "OUTSCRAPER_API_KEY",
