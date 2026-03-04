@@ -29,9 +29,7 @@ BASE_FILENAME = "manufacturing_outscraper"
 # 10 manufacturing subtypes provided by Outscraper
 # adjust this list as needed, must reflect real place categories
 KEYWORDS = [
-    "Automotive manufacturing",
-    "Aerospace manufacturing",
-    "Electronics manufacturing"
+    "manufacturer","food manufacturer","machining manufacturer","medical equipment manufacturer","trailer manufacturer","leather goods manufacturer"
 ]
 
 OUTSCRAPER_API_KEY = os.environ.get(
