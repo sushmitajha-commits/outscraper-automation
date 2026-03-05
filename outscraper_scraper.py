@@ -32,26 +32,35 @@ BASE_FILENAME = "manufacturing_outscraper"
 # LOAD KEYWORDS FROM CSV
 # ─────────────────────────────────────────────
 
-MANUFACTURERS_PATH = "Manufacturers.csv"
+# MANUFACTURERS_PATH = "Manufacturers.csv"
 
-manufacturers_df = pd.read_csv(MANUFACTURERS_PATH)
+# manufacturers_df = pd.read_csv(MANUFACTURERS_PATH)
 
-# Normalize columns
-manufacturers_df.columns = manufacturers_df.columns.str.strip()
+# # Normalize columns
+# manufacturers_df.columns = manufacturers_df.columns.str.strip()
 
-# Take only rows that are NOT done
-manufacturers_df = manufacturers_df[
-    manufacturers_df["Status"].str.lower() != "done"
-]
+# # Take only rows that are NOT done
+# manufacturers_df = manufacturers_df[
+#     manufacturers_df["Status"].str.lower() != "done"
+# ]
 
-# Extract keywords
-KEYWORDS = (
-    manufacturers_df["Type"]
-    .dropna()
-    .astype(str)
-    .str.strip()
-    .tolist()
-)
+# # Extract keywords
+# KEYWORDS = (
+#     manufacturers_df["Type"]
+#     .dropna()
+#     .astype(str)
+#     .str.strip()
+#     .tolist()
+# )
+
+KEYWORDS = ['machinery parts manufacturer',
+'clothes and fabric manufacturer',
+'truss manufacturer',
+'paint manufacturer',
+'glass manufacturer',
+'optical products manufacturer'
+'toy and game manufacturer'
+'food manufacturing supply']
 
 print(f"Loaded {len(KEYWORDS)} keywords from Manufacturers.csv")
 
