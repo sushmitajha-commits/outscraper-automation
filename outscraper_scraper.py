@@ -66,7 +66,7 @@ print(f"Loaded {len(KEYWORDS)} keywords from Manufacturers.csv")
 
 OUTSCRAPER_API_KEY = os.environ.get(
     "OUTSCRAPER_API_KEY",
-    "MWJjYjRmMGM2MThiNDg5MWI5ZjZlZGIyYTQyOWNkNGF8ZWQzZDhhOTdjZA",
+,
 )
 client = ApiClient(api_key=OUTSCRAPER_API_KEY)
 
