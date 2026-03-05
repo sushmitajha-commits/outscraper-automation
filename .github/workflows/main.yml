@@ -1,6 +1,7 @@
 name: Run Outscraper
 
-
+on:
+  workflow_dispatch:   # only runs when manually triggered
 
 jobs:
   run-script:
